@@ -29,10 +29,16 @@ configure<JavaPluginConvention> {
 val nativeLib = project(":native-lib")
 
 tasks.processResources {
-    from(nativeLib.tasks["linkReleaseWindowsX86"]) {
-        into("win32-x86")
+    nativeLib.tasks.findByName("linkReleaseWindowsX86")?.also {
+        from(it) {
+            include("**/*.dll")
+            into("win32-x86")
+        }
     }
-    from(nativeLib.tasks["linkReleaseWindowsX86-64"]) {
-        into("win32-x86-64")
+    nativeLib.tasks.findByName("linkReleaseWindowsX86-64")?.also {
+        from(it) {
+            include("**/*.dll")
+            into("win32-x86-64")
+        }
     }
 }
