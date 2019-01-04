@@ -41,4 +41,16 @@ tasks.processResources {
             into("win32-x86-64")
         }
     }
+    nativeLib.tasks.findByName("linkReleaseLinuxX86")?.also {
+        from(it) {
+            include("**/*.so")
+            into("linux-x86")
+        }
+    }
+    nativeLib.tasks.findByName("linkReleaseLinuxX86-64")?.also {
+        from(it) {
+            include("**/*.so")
+            into("linux-x86-64")
+        }
+    }
 }
