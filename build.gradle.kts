@@ -1,6 +1,7 @@
 plugins {
     java
     idea
+    id("com.github.ben-manes.versions").version("0.20.0")
 }
 
 group = "com.skaggsm"
@@ -14,8 +15,8 @@ dependencies {
     implementation("net.java.dev.jna", "jna", "5.2.0")
     implementation("net.java.dev.jna", "jna-platform", "5.2.0")
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.3.1")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.3.1")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.3.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.3.2")
 }
 
 tasks.test {
