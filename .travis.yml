@@ -2,7 +2,10 @@ language: java
 
 addons:
   apt:
+    update: true
     packages:
+      - gcc
+      - g++
       - gcc-multilib
       - g++-multilib
 
