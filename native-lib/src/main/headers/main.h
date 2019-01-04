@@ -4,7 +4,7 @@
     //  Microsoft
     #define JNIIMPORT __declspec(dllimport)
     #define JNIEXPORT __declspec(dllexport)
-#elif defined(__GNUC__) || __has_attribute(visibility)
+#elif defined(__GNUC__) || __has_attribute(__visibility__)
     //  GCC
     #define JNIIMPORT __attribute__((visibility("default")))
     #define JNIEXPORT __attribute__((visibility("default")))
