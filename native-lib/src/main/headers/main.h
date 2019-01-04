@@ -2,19 +2,21 @@
 
 #if defined(_MSC_VER)
     //  Microsoft
-    #define EXPORT __declspec(dllexport)
-    #define IMPORT __declspec(dllimport)
-#elif defined(__GNUC__)
+    #define JNIIMPORT __declspec(dllimport)
+    #define JNIEXPORT __declspec(dllexport)
+#elif defined(__GNUC__) || __has_attribute(visibility)
     //  GCC
-    #define EXPORT __attribute__((visibility("default")))
-    #define IMPORT
+    #define JNIIMPORT __attribute__((visibility("default")))
+    #define JNIEXPORT __attribute__((visibility("default")))
 #else
     //  do nothing and hope for the best?
-    #define EXPORT
-    #define IMPORT
+    #define JNIIMPORT
+    #define JNIEXPORT
     #pragma warning Unknown dynamic link import/export semantics.
 #endif
 
-extern "C" EXPORT void printIt();
+extern "C" {
+    JNIEXPORT void printIt();
 
-extern "C" EXPORT char * getHelloWorld();
+    JNIEXPORT char * getHelloWorld();
+}
