@@ -21,6 +21,10 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+    systemProperty("jna.debug_load", true)
+    testLogging {
+        showStandardStreams = true
+    }
 }
 
 configure<JavaPluginConvention> {
@@ -54,16 +58,10 @@ tasks.processResources {
             into("linux-x86-64")
         }
     }
-    nativeLib.tasks.findByName("linkReleaseMacosX86")?.also {
-        from(it) {
-            include("**/*.dylib")
-            into("darwin-x86")
-        }
-    }
     nativeLib.tasks.findByName("linkReleaseMacosX86-64")?.also {
         from(it) {
             include("**/*.dylib")
-            into("darwin-x86-64")
+            into("darwin")
         }
     }
 }
